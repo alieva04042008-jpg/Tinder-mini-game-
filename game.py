@@ -9,7 +9,7 @@ pygame.display.set_caption("Tinder Mini Game")
 
 font = pygame.font.SysFont("arial", 24)
 
-heart_img = pygame.image.load("images/heart.png")
+heart_img = pygame.image.load("images/heart.jpg")
 cross_img = pygame.image.load("images/cross.png")
 
 heart_img = pygame.transform.scale(heart_img, (90, 90))
@@ -29,21 +29,13 @@ def draw_buttons():
 
 
 def run_game():
-    try:
-        background = pygame.image.load("images/background.jpg").convert()
-        background = pygame.transform.scale(background, (WIDTH, HEIGHT))
-    except Exception:
-        background = None
         
     running = True
     index = 0
     liked = []
 
     while running and index < len(characters):
-        if background:
-            screen.blit(background, (0, 0))
-        else:
-            screen.fill((245, 245, 245))
+        screen.fill((255, 255, 255))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
