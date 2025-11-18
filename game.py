@@ -29,12 +29,21 @@ def draw_buttons():
 
 
 def run_game():
+    try:
+        background = pygame.image.load("images/background.jpg").convert()
+        background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+    except Exception:
+        background = None
+        
     running = True
     index = 0
     liked = []
 
     while running and index < len(characters):
-        screen.fill((245, 245, 245))
+        if background:
+            screen.blit(background, (0, 0))
+        else:
+            screen.fill((245, 245, 245))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
