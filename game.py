@@ -62,8 +62,13 @@ def run_game():
 
         img = load_image(char["image"])
         if img:
-            img = pygame.transform.scale(img, (320, 420))
+            w, h = img.get_size()
+            target_w, target_h = 320, 420
+            scale = min(target_w / w, target_h / h)
+            new_w, new_h = int(w * scale), int(h * scale)
+            img = pygame.transform.scale(img, (new_w, new_h))
             screen.blit(img, (90, 80))
+
 
         text = f"{char['name']} — {char['description']}"
         info = font.render(text, True, (0, 0, 0))
