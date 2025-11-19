@@ -21,18 +21,51 @@ def load_image(path):
         return pygame.image.load(path)
     except:
         return None
+    
+def main_menu():
+    menu_running = True
+    title_font = pygame.font.SysFont("arial", 40)
+    button_font = pygame.font.SysFont("arial", 30)
 
+    while menu_running:
+        screen.fill((255, 182, 193))
+
+        title = title_font.render("Welcome to Tinder", True, (0, 0, 0))
+        screen.blit(title, (70, 150))
+        
+        subtitle_font = pygame.font.SysFont("arial", 30)
+        subtitle = subtitle_font.render("( from Temu )", True, (50, 50, 50))
+        screen.blit(subtitle, (150, 200))
+        
+        
+        subtitle_font = pygame.font.SysFont("arial", 30)
+        subtitle = subtitle_font.render("Press start!", True, (50, 50, 50))
+        screen.blit(subtitle, (180, 300))
+
+        start_button = pygame.Rect(150, 350, 200, 80)
+        pygame.draw.rect(screen, (255, 105, 180), start_button, border_radius=20)
+
+        start_text = button_font.render("Start", True, (255, 255, 255))
+        screen.blit(start_text, (215, 375))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN and start_button.collidepoint(event.pos):
+                menu_running = False
+
+        pygame.display.update()
 
 def draw_buttons():
     screen.blit(heart_img, (320, 560))
     screen.blit(cross_img, (90, 560))
 
-
 def run_game():
-        
+    liked = []
     running = True
     index = 0
-    liked = []
 
     while running and index < len(characters):
         screen.fill((255, 255, 255))
@@ -80,12 +113,15 @@ def run_game():
 
 
     screen.fill((245, 245, 245))
-    summary_text = "You liked:\n" + "\n".join([c["name"] for c in liked])
-    lines = summary_text.split("\n")
+    if len(liked) == 0:
+        summary_text = "You liked:\n" + "You liked no one\n" + "Who are you? Apalon?"
+        lines = summary_text.split("\n")
+    else:
+        summary_text = "You liked:\n" + "\n".join([c["name"] for c in liked])
+        lines = summary_text.split("\n")
     for i, line in enumerate(lines):
         info = font.render(line, True, (0, 0, 0))
         screen.blit(info, (50, 50 + i * 40))
     pygame.display.update()
-    pygame.time.wait(5000)
-
+    pygame.time.wait(4000)
     pygame.quit()
