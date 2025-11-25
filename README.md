@@ -1,24 +1,54 @@
 # Tinder-mini-game-
 
-Title:
-Mini Tinder Game
+===================== DESCRIPTION =======================
 
-Author:
-Alina
+Good morning , afternoon and evening everybody!
+Welcome to my mini game based on Tinder (not sponsored).
+I need to clarify, that this is just a game for fun, 
+that is solving only the problem of boredom.
+This game made for everybody who wants to play it,
+meet bunch of different characters , like or deslike them
+and most importantly HAVE FUN!
 
-Description:
-This is a simple Python-based mini dating simulator inspired by Tinder. The program interacts with the user by asking for their name and gender, then presents a selection of characters. The user can “like” or “dislike” each character.
+===================== MAIN MENU =======================
 
-Purpose of the Program:
-Finding “the one” in real life is hard…but in this game, there’s no need to stress! Meet a bunch of quirky characters, swipe left or right, and just have fun seeing who catches your eye.
+![Main Screen](./images/menu.png)
 
-To-Do List:
-1)Install Pygame and set up the program.
-2)Make a welcome screen and ask for the user’s name and gender.
-3)Add character pictures and basic info.
-4)Show characters on the main screen.
-5)Let the user “like” or “dislike” characters.
-6)Keep track of liked characters.
-7)Show which characters the user liked at the end.
-8)Add simple animations or effects for likes/dislikes.
-9)Test the game and fix bugs.
+===================== INSTALLATION =======================
+Step 1
+Clone or download the repository
+Step 2
+Open the project folder in VS Code
+Step 3
+Install all requirements: pip install -r requirements.txt
+Step 4
+Run the project : python main.py
+
+===================== USAGE =======================
+
+![Demo](images/demo.gif)
+
+===================== My opinion =======================
+I have a perfect project, but nothing is perfect,
+so I will put myself 99/100
+
+===================== TODO =======================
+
+Pass the course python2 :)
+
+===================== Structure =======================
+TINDER-MINI-GAME/
+├── README.md
+├── game.py
+├── characters.py
+├── requirements.txt
+├── main.py
+├── images
+
+===================== Members =======================
+
+- GitHub: [@alieva04042008-jpg](https://github.com/alieva04042008-jpg)
+- Email: alieva04042008@gmail.com
+
+===================== SUPPORT =======================
+Put me 30/30 pls 
