@@ -119,9 +119,11 @@ def run_game():
     else:
         summary_text = "You liked:\n" + "\n".join([c["name"] for c in liked])
         lines = summary_text.split("\n")
-    for i, line in enumerate(lines):
+    y = 50  
+    for line in lines:
         info = font.render(line, True, (0, 0, 0))
-        screen.blit(info, (50, 50 + i * 40))
+        screen.blit(info, (50, y))
+        y += 40  
     pygame.display.update()
     pygame.time.wait(4000)
     pygame.quit()
