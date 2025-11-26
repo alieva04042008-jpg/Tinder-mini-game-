@@ -1,7 +1,10 @@
 import pygame
 from characters import characters
 import requests
-from secret import key
+import os
+from dotenv import load_dotenv
+load_dotenv()
+key = os.getenv('WEATHER_API_KEY')
 
 pygame.init()
 
