@@ -1,5 +1,6 @@
 import pygame
 from characters import characters
+import requests
 
 pygame.init()
 
@@ -15,6 +16,14 @@ cross_img = pygame.image.load("images/cross.png")
 heart_img = pygame.transform.scale(heart_img, (90, 90))
 cross_img = pygame.transform.scale(cross_img, (90, 90))
 
+def get_temp():
+    api_key = "0d43e8d6fb2548dea143683f2d0c8927"
+    city = "Barcelona"
+    try:
+        data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={api_key}").json()
+        return str(round(data["main"]["temp"])) + "°C"
+    except:
+        return None
 
 def load_image(path):
     try:
@@ -66,7 +75,7 @@ def run_game():
     liked = []
     running = True
     index = 0
-
+    temp_font = pygame.font.SysFont("arial", 20)
     while running and index < len(characters):
         screen.fill((255, 255, 255))
 
@@ -109,6 +118,12 @@ def run_game():
         screen.blit(info, (50, 520))
 
         draw_buttons()
+        
+        temp_text = temp_font.render("Barcelona: " + get_temp(), True, (0, 0, 0))
+        rect = temp_text.get_rect()
+        rect.bottomright = (WIDTH - 10, HEIGHT - 20)
+        screen.blit(temp_text, rect)
+        
         pygame.display.update()
 
 
