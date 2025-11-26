@@ -1,6 +1,7 @@
 import pygame
 from characters import characters
 import requests
+from secret import key
 
 pygame.init()
 
@@ -17,13 +18,12 @@ heart_img = pygame.transform.scale(heart_img, (90, 90))
 cross_img = pygame.transform.scale(cross_img, (90, 90))
 
 def get_temp():
-    api_key = "0d43e8d6fb2548dea143683f2d0c8927"
     city = "Barcelona"
     try:
-        data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={api_key}").json()
+        data = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={key}").json()
         return str(round(data["main"]["temp"])) + "°C"
     except:
-        return None
+        return "No °C"
 
 def load_image(path):
     try:
