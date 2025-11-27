@@ -95,13 +95,6 @@ def run_game():
                 if 90 < x < 180 and 560 < y < 650:
                     index += 1
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    liked.append(characters[index])
-                    index += 1
-                if event.key == pygame.K_LEFT:
-                    index += 1
-
         if index >= len(characters):
             break
 
@@ -116,23 +109,23 @@ def run_game():
         draw_buttons()
         
         temp_text = temp_font.render("Barcelona: " + get_temp(), True, (0, 0, 0))
-        screen.blit(temp_text, (WIDTH - 150, HEIGHT - 40)) 
+        screen.blit(temp_text, (350, 650)) 
         
         pygame.display.update()
 
 
     screen.fill((245, 245, 245))
     if len(liked) == 0:
-        summary_text = "You liked:\n" + "You liked no one\n" + "Who are you? Apalon?"
-        lines = summary_text.split("\n")
+        lines = ["You liked:", "You liked none","Who are you? Apalon?"]
     else:
-        summary_text = "You liked:\n" + "\n".join([c["name"] for c in liked])
-        lines = summary_text.split("\n")
+        lines = ["You liked:"]
+        lines += [c.name for c in liked]
+        
     y = 50  
     for line in lines:
         info = font.render(line, True, (0, 0, 0))
         screen.blit(info, (50, y))
-        y += 40  
+        y += 50  
     pygame.display.update()
     pygame.time.wait(4000)
     pygame.quit()
