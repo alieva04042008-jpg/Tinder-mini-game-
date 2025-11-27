@@ -20,6 +20,7 @@ cross_img = pygame.image.load("images/cross.png")
 heart_img = pygame.transform.scale(heart_img, (90, 90))
 cross_img = pygame.transform.scale(cross_img, (90, 90))
 
+
 def get_temp():
     city = "Barcelona"
     try:
@@ -106,17 +107,9 @@ def run_game():
 
         char = characters[index]
 
-        img = load_image(char["image"])
-        if img:
-            w, h = img.get_size()
-            target_w, target_h = 320, 420
-            scale = min(target_w / w, target_h / h)
-            new_w, new_h = int(w * scale), int(h * scale)
-            img = pygame.transform.scale(img, (new_w, new_h))
-            screen.blit(img, (90, 80))
+        screen.blit(char.image, (90, 80))
 
-
-        text = f"{char['name']} — {char['description']}"
+        text = f"{char.name} — {char.description}"
         info = font.render(text, True, (0, 0, 0))
         screen.blit(info, (50, 520))
 
