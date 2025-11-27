@@ -116,9 +116,7 @@ def run_game():
         draw_buttons()
         
         temp_text = temp_font.render("Barcelona: " + get_temp(), True, (0, 0, 0))
-        rect = temp_text.get_rect()
-        rect.bottomright = (WIDTH - 10, HEIGHT - 20)
-        screen.blit(temp_text, rect)
+        screen.blit(temp_text, (WIDTH - 150, HEIGHT - 40)) 
         
         pygame.display.update()
 
